@@ -3,14 +3,14 @@ use std::io;
 fn main() {
     println!("Temperature Converter");
 
-    temperature_converted();
+    temperature_converter();
 }
 
 fn choice() -> u32 {
     loop {
         println!("Choose an option: ");
-        println!("1. Fahrenheit to Celsius");
-        println!("2. Celsius to Fahrenheit");
+        println!("1. Celsius to Fahrenheit");
+        println!("2. Fahrenheit to Celsius");
         println!("3. Exit");
 
         let mut choice = String::new();
@@ -55,27 +55,51 @@ fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
     (fahrenheit - 32.0) * 5.0 / 9.0
 }
 
-fn temperature_converted() {
+fn temperature_converter() {
     loop {
         let choice: u32 = choice();
 
-        if choice == 1 {
-            let temperature = get_temperature_input("Enter with the temperature in Fahrenheit: ");
-            let fahrenheit_to_celsius: f64 = fahrenheit_to_celsius(temperature);
-            println!("The temperature in Celsius is: {fahrenheit_to_celsius}°C");
-            println!("")
-        } else if choice == 2 {
-            let temperature = get_temperature_input("Enter with the temperature in Celsius: ");
-            let celsius_to_fahrenheit: f64 = celsius_to_fahrenheit(temperature);
-            println!("The temperature in Fahrenheit is: {celsius_to_fahrenheit}°F");
-            println!("");
-        } else if choice == 3 {
-            println!("Exiting the program!");
-            println!("");
-            break;
-        } else {
-            println!("Invalid choice. Please enter a valid option (1-3).");
-            println!();
+        match choice {
+            1 => {
+                let temperature: f64 = get_temperature_input("Enter with the temperature in Celsius: ");
+                let celsius_to_fahrenheit: f64 = celsius_to_fahrenheit(temperature);
+                println!("The temperature in Fahrenheit is: {celsius_to_fahrenheit}°F");
+                println!("");
+            }
+            2 => {
+                let temperature: f64 = get_temperature_input("Enter with the temperature in Fahrenheit: ");
+                let fahrenheit_to_celsius: f64 = fahrenheit_to_celsius(temperature);
+                println!("The temperature in Celsius is: {fahrenheit_to_celsius}°C");
+                println!("");
+            }
+            3 => {
+                println!("Exiting the program!");
+                println!("");
+                break;
+            }
+            _ => {
+                println!("Invalid choice. Please enter a valid option (1-3).");
+                println!();
+            }
         }
+
+        // if choice == 1 {
+        //     let temperature = get_temperature_input("Enter with the temperature in Fahrenheit: ");
+        //     let fahrenheit_to_celsius: f64 = fahrenheit_to_celsius(temperature);
+        //     println!("The temperature in Celsius is: {fahrenheit_to_celsius}°C");
+        //     println!("")
+        // } else if choice == 2 {
+        //     let temperature = get_temperature_input("Enter with the temperature in Celsius: ");
+        //     let celsius_to_fahrenheit: f64 = celsius_to_fahrenheit(temperature);
+        //     println!("The temperature in Fahrenheit is: {celsius_to_fahrenheit}°F");
+        //     println!("");
+        // } else if choice == 3 {
+        //     println!("Exiting the program!");
+        //     println!("");
+        //     break;
+        // } else {
+        //     println!("Invalid choice. Please enter a valid option (1-3).");
+        //     println!();
+        // }
     }
 }
