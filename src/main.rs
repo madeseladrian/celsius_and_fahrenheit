@@ -3,17 +3,18 @@ use std::io;
 fn main() {
     println!("Temperature Converter");
 
+    // Choice the apropriate temperature converter
     temperature_converter();
 }
 
-fn choice() -> u32 {
+fn choose_an_option() -> u8 {
     loop {
         println!("Choose an option: ");
         println!("1. Celsius to Fahrenheit");
         println!("2. Fahrenheit to Celsius");
         println!("3. Exit");
 
-        let mut choice = String::new();
+        let mut choice: String = String::new();
 
         io::stdin()
             .read_line(&mut choice)
@@ -33,7 +34,7 @@ fn get_temperature_input(prompt: &str) -> f64 {
     loop {
         println!("{}", prompt);
 
-        let mut input = String::new();
+        let mut input: String = String::new();
 
         io::stdin().read_line(&mut input).expect("Failed to read line.");
 
@@ -57,16 +58,19 @@ fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
 
 fn temperature_converter() {
     loop {
-        let choice: u32 = choice();
+        // Choice the apropriate temperature converter
+        let choice: u8 = choose_an_option();
 
         match choice {
             1 => {
+                // Convert temperature from Celsius to Fahrenheit 
                 let temperature: f64 = get_temperature_input("Enter with the temperature in Celsius: ");
                 let celsius_to_fahrenheit: f64 = celsius_to_fahrenheit(temperature);
                 println!("The temperature in Fahrenheit is: {celsius_to_fahrenheit}°F");
                 println!("");
             }
             2 => {
+                // Convert temperature from Fahrenheit to Celsius
                 let temperature: f64 = get_temperature_input("Enter with the temperature in Fahrenheit: ");
                 let fahrenheit_to_celsius: f64 = fahrenheit_to_celsius(temperature);
                 println!("The temperature in Celsius is: {fahrenheit_to_celsius}°C");
