@@ -7,18 +7,22 @@ fn main() {
         let choice: u32 = choice();
 
         if choice == 1 {
-            let temperature = get_temperature_input();
+            let temperature = get_temperature_input("Enter with the temperature in Fahrenheit: ");
             let fahrenheit_to_celsius: f64 = fahrenheit_to_celsius(temperature);
             println!("The temperature in Celsius is: {fahrenheit_to_celsius}°C");
+            println!("")
         } else if choice == 2 {
-            let temperature = get_temperature_input();
+            let temperature = get_temperature_input("Enter with the temperature in Celsius: ");
             let celsius_to_fahrenheit: f64 = celsius_to_fahrenheit(temperature);
             println!("The temperature in Celsius is: {celsius_to_fahrenheit}°F");
+            println!("");
         } else if choice == 3 {
             println!("Exiting the program!");
+            println!("");
             break;
         } else {
-            println!("Invalid choice. Please enter a valid option (1-3).")
+            println!("Invalid choice. Please enter a valid option (1-3).");
+            println!();
         }
     }
 }
@@ -46,9 +50,9 @@ fn choice() -> u32 {
     }
 }
 
-fn get_temperature_input() -> f64 {
+fn get_temperature_input(prompt: &str) -> f64 {
     loop {
-        println!("Enter with temperature: ");
+        println!("{}", prompt);
 
         let mut input = String::new();
 
