@@ -3,20 +3,23 @@ use std::io;
 fn main() {
     println!("Temperature Converter");
 
-    let choice: u32 = choice();
+    loop {
+        let choice: u32 = choice();
 
-    if choice == 1 {
-        let temperature = get_temperature_input();
-        let fahrenheit_to_celsius: f64 = fahrenheit_to_celsius(temperature);
-        println!("The temperature in Celsius is: {fahrenheit_to_celsius}°C");
-    } else if choice == 2 {
-        let temperature = get_temperature_input();
-        let celsius_to_fahrenheit: f64 = celsius_to_fahrenheit(temperature);
-        println!("The temperature in Celsius is: {celsius_to_fahrenheit}°F");
-    } else if choice == 3 {
-        println!("Exiting the program!");
-    } else {
-        println!("Invalid choice. Please enter a valid option (1-3).")
+        if choice == 1 {
+            let temperature = get_temperature_input();
+            let fahrenheit_to_celsius: f64 = fahrenheit_to_celsius(temperature);
+            println!("The temperature in Celsius is: {fahrenheit_to_celsius}°C");
+        } else if choice == 2 {
+            let temperature = get_temperature_input();
+            let celsius_to_fahrenheit: f64 = celsius_to_fahrenheit(temperature);
+            println!("The temperature in Celsius is: {celsius_to_fahrenheit}°F");
+        } else if choice == 3 {
+            println!("Exiting the program!");
+            break;
+        } else {
+            println!("Invalid choice. Please enter a valid option (1-3).")
+        }
     }
 }
 
